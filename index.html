@@ -4,18 +4,22 @@
  <link rel="stylesheet" href="indexStyle.css">
 </head>
 <body>
-  <div class="units">
-    <span class="hour">00</span>
-    <span class="minutes">00</span>
-    <span class="second">00</span>
+  <div class="body">
+    <div id="units" class="units">
+      <span id="hour" class="digits">00:</span>
+      <span id="minutes" class="digits">00:</span>
+      <span id="second" class="digits">00:</span>
+      <span id="count" class="digits">00</span>
+    </div>
+    
+    <div id="buttons">
+      <button id="start" class="button">START</button>
+      <button id="reset" class="button">RESET</button>
+    </div>
   </div>
+
+
   
-  <div class="buttons">
-    <button class="start" onclick="buttonChange()">START</button>
-    <button class="reset">RESET</button>
-  </div>
-
-  <p class="abc " id="abc"></p>
 
 
 
@@ -37,9 +41,7 @@
 
 
 
-
-  <script src="indexjs.js">
-    document.getElementsById('abc').innerHTML="abc";
-  </script>
+  <script src="indexjs.js"></script>
+  
 </body>
 </html>
