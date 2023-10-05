@@ -1,4 +1,8 @@
 
+
+
+var startBtn = true;
+var stopbutton = false;
 // taken variables for BUTTONS
 
 let startButton = document.getElementById('start');
@@ -11,6 +15,7 @@ let second = document.getElementById('second');
 let minutes = document.getElementById('minutes');
 let hours = document.getElementById('hour');
 
+
 // initializing variables
 
 let[hour,min,sec,count,timer] = [0,0,0,0,false];
@@ -19,6 +24,7 @@ let[hour,min,sec,count,timer] = [0,0,0,0,false];
 
 function start(){
      timer = true;
+     
      stopWatch();
 }
 function reset(){
@@ -36,33 +42,61 @@ function reset(){
   hours.innerHTML = "00:";
 }
 
+function stop(){
+  timer = false;
+  
+}
+
 
 startButton.addEventListener("click", start);
+
 resetButton.addEventListener("click", reset);
 
-let changeButton = document.querySelector("#start");
+
+
+
+let changeButton1 = document.querySelector("#start");
+let changeButton2 = document.querySelector("#reset");
+
+changeButton1.addEventListener("click",change);
+
 
 function change(){
-  changeButton.textContent = "STOP";
+  if(timer == true){
+    changeButton1.innerHTML = "STOP";
+    changeButton2.innerHTML = "LAP";
+    changeButton1.addEventListener("click",stop);
+  }
+  if(timer == false){
+    changeButton1.innerHTML = "START";
+    changeButton2.innerHTML = "RESET";
+    changeButton1.addEventListener("click",start);
+  }
+  
 }
-changeButton.addEventListener("click",change);
+
+
+
+
+  
+
 
 
 
 function stopWatch(){
-    if(timer == true){
+    if(timer){
       count++;
       if(count == 100){
         count=0;
         sec++;
-        if(sec == 60){
+      }
+      if(sec == 60){
           sec=0;
           min++;
-          if(min == 60){
-            min=0;
-            hour++;
-          }
-        }
+      }
+      if(min == 60){
+          min=0;
+          hour++;
       }
 
       let [hr,secnd,mint,cont] = [hour,sec,min,count];
@@ -80,6 +114,21 @@ function stopWatch(){
       if(count<10){
         cont = '0' + cont;
       }
+
+      if(hour>=10){
+        hr = hr +':';
+      }
+      if(sec>=10){
+        secnd = secnd +':';
+      }
+      if(min>=10){
+        mint = mint +':';
+      }
+      
+
+      
+      
+    
       
       
       counter.innerHTML = cont;
