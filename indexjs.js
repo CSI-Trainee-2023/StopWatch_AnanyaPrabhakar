@@ -12,43 +12,37 @@ let hours = document.getElementById("hour");
 
 // initializing variables
 
-let [hour, min, sec, count, timer, startbtn, stopbtn] = [0, 0, 0, 0, false, true, false];
+let [hour, min, sec, count] = [0, 0, 0, 0];
+
+var startbtn = true;
+var stopbtn = false;
+
+var timer = false;
 
 // Calling Functions of button
 
-startButton.addEventListener("click", start);
-resetButton.addEventListener("click", reset);
+// startButton.addEventListener("click", start);
+// resetButton.addEventListener("click", reset);
 
-
-
-startButton.addEventListener("click", function(){
-  if (startbtn == true){
+startButton.addEventListener("click", function () {
+  if (startbtn == true) {
     start();
-  }
-  else if (stopbtn == true){
+  } 
+  else if (stopbtn == true) {
     stop();
   }
 });
-// Reset Function
 
-function reset() {
-  timer = false;
-  [hour, min, sec, count] = [0, 0, 0, 0];
-  counter.innerHTML = "00";
-  second.innerHTML = "00:";
-  minutes.innerHTML = "00:";
-  hours.innerHTML = "00:";
-}
+resetButton.addEventListener("click", reset);
 
 //  Start Function
-
 function start() {
-  
+  startbtn = false;
   startButton.innerHTML = "STOP";
   resetButton.innerHTML = "LAP";
   timer = true;
   stopbtn = true;
-  
+
   stopWatch();
 }
 
@@ -62,16 +56,21 @@ function stop() {
   resetButton.innerHTML = "RESET";
 }
 
-resetButton.addEventListener("click", reset);
+// Reset Function
 
+function reset() {
+  timer = false;
+  startbtn = true;
+  [hour, min, sec, count] = [0, 0, 0, 0];
+  counter.innerHTML = "00";
+  second.innerHTML = "00:";
+  minutes.innerHTML = "00:";
+  hours.innerHTML = "00:";
+}
 
-
-startButton.addEventListener("click", function change(){
-  startButton.addEventListener("click",stop);
-});
-
-
-
+// if(timer == false){
+//   startButton.addEventListener("click",stopWatch);
+// }
 
 // StopWatch Function
 
@@ -119,6 +118,7 @@ function stopWatch() {
     second.innerHTML = secnd;
     hours.innerHTML = hr;
     minutes.innerHTML = mint;
-    setTimeout(stopWatch, 10);
+
+    setTimeout("stopWatch()", 10);
   }
 }
