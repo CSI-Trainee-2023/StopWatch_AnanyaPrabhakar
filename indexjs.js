@@ -12,17 +12,11 @@ let hours = document.getElementById("hour");
 
 // initializing variables
 
-let [hour, min, sec, count] = [0, 0, 0, 0];
+let [hour, min, sec, count, timer, startbtn, stopbtn] = [0, 0, 0, 0, false, true, false];
 
-var startbtn = true;
-var stopbtn = false;
-
-var timer = false;
 
 // Calling Functions of button
 
-// startButton.addEventListener("click", start);
-// resetButton.addEventListener("click", reset);
 
 startButton.addEventListener("click", function () {
   if (startbtn == true) {
@@ -36,6 +30,7 @@ startButton.addEventListener("click", function () {
 resetButton.addEventListener("click", reset);
 
 //  Start Function
+
 function start() {
   startbtn = false;
   startButton.innerHTML = "STOP";
@@ -52,7 +47,7 @@ function stop() {
   timer = false;
   startbtn = true;
   stopbtn = false;
-  startButton.innerHTML = "START";
+  startButton.innerHTML = "RESUME";
   resetButton.innerHTML = "RESET";
 }
 
@@ -61,6 +56,7 @@ function stop() {
 function reset() {
   timer = false;
   startbtn = true;
+  startButton.innerHTML = "START";
   [hour, min, sec, count] = [0, 0, 0, 0];
   counter.innerHTML = "00";
   second.innerHTML = "00:";
@@ -68,9 +64,8 @@ function reset() {
   hours.innerHTML = "00:";
 }
 
-// if(timer == false){
-//   startButton.addEventListener("click",stopWatch);
-// }
+
+document.addEventListener("keydown",)
 
 // StopWatch Function
 
